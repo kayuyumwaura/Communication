@@ -7,7 +7,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 class GetTickets {
   Future<List<Tickets>> getIssues() async {
     final res = await http
-        .get(Uri.http('fmsadmintest.azurewebsites.net', 'api/dealertickets/1'));
+        .get(Uri.http('abusiveexperiencereport.googleapis.com', 'api/dealertickets/1'));
     if (res.statusCode == 200) {
       var json = jsonDecode(res.body);
       //List data = json['data'];
@@ -26,7 +26,7 @@ class GetTicketsNew {
     var userid = prefs.getString('userid');
     final res = await http.get(
         //To be changed to concanate dealer id, based on logged in user; store id somewhere
-        Uri.http('fmsadmintest.azurewebsites.net',
+        Uri.http('abusiveexperiencereport.googleapis.com',
             'api/techniciantickets/' + userid + '/InProgress'));
     if (res.statusCode == 200) {
       var json = jsonDecode(res.body);
@@ -57,7 +57,7 @@ class GetTicketsPendingInProgress {
     //pass dealer id here
     SharedPreferences prefs = await SharedPreferences.getInstance();
     var userid = prefs.getString('userid');
-    final res = await http.get(Uri.http('fmsadmintest.azurewebsites.net',
+    final res = await http.get(Uri.http('abusiveexperiencereport.googleapis.com',
         'api/techniciantickets/' + userid + '/Pending-InProgress'));
     if (res.statusCode == 200) {
       var json = jsonDecode(res.body);
@@ -78,7 +78,7 @@ class GetTicketsOnhold {
     //pass dealer id here
     SharedPreferences prefs = await SharedPreferences.getInstance();
     var userid = prefs.getString('userid');
-    final res = await http.get(Uri.http('fmsadmintest.azurewebsites.net',
+    final res = await http.get(Uri.http('abusiveexperiencereport.googleapis.com',
         'api/techniciantickets/' + userid + '/Onhold'));
     if (res.statusCode == 200) {
       var json = jsonDecode(res.body);
@@ -99,7 +99,7 @@ class GetTicketsClosed {
     //pass dealer id here
     SharedPreferences prefs = await SharedPreferences.getInstance();
     var userid = prefs.getString('userid');
-    final res = await http.get(Uri.http('fmsadmintest.azurewebsites.net',
+    final res = await http.get(Uri.http('abusiveexperiencereport.googleapis.com',
         'api/techniciantickets/' + userid + '/Closed'));
     if (res.statusCode == 200) {
       var json = jsonDecode(res.body);
@@ -121,7 +121,7 @@ class GetDealerStations {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     var userid = prefs.getString('userid');
     final res = await http.get(Uri.http(
-        'fmsadmintest.azurewebsites.net', 'api/dealerstations/' + userid));
+        'abusiveexperiencereport.googleapis.com', 'api/dealerstations/' + userid));
     if (res.statusCode == 200) {
       var json = jsonDecode(res.body);
       //List data = json['data'];
@@ -136,7 +136,7 @@ class GetDealerStations {
 class GetIssueTypes {
   Future<List<IssueTypes>> getIssueTypes() async {
     final res = await http
-        .get(Uri.http('fmsadmintest.azurewebsites.net', 'api/issuetypes'));
+        .get(Uri.http('abusiveexperiencereport.googleapis.com', 'api/issuetypes'));
     if (res.statusCode == 200) {
       var json = jsonDecode(res.body);
       //List data = json['data'];
@@ -153,7 +153,7 @@ class GetIssueTypes {
 class GetStationAssets {
   Future<List<Assets>> getStationAssets(String stationId) async {
     final res = await http.get(Uri.http(
-        'fmsadmintest.azurewebsites.net', 'api/stationassets/' + stationId));
+        'abusiveexperiencereport.googleapis.com', 'api/stationassets/' + stationId));
     if (res.statusCode == 200) {
       var json = jsonDecode(res.body);
       //List data = json['data'];
@@ -177,7 +177,7 @@ class PostIssues {
       String issue,
       String issueDescription) async {
     final res = await http.post(
-      Uri.http('fmsadmintest.azurewebsites.net', 'api/createticket'),
+      Uri.http('abusiveexperiencereport.googleapis.com', 'api/createticket'),
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
       },
@@ -205,7 +205,7 @@ class PostIssues {
 class CloseIssue {
   Future closeIssue(int ticketId) async {
     final res = await http.post(
-      Uri.http('fmsadmintest.azurewebsites.net', 'api/closeticket'),
+      Uri.http('abusiveexperiencereport.googleapis.com', 'api/closeticket'),
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
       },
@@ -225,7 +225,7 @@ class CloseIssue {
 class OnSite{
   Future TechnicianOnSite(int technicianId) async {
     final res = await http.post(
-      Uri.http('fmsadmintest.azurewebsites.net', 'api/technicianonsite'),
+      Uri.http('abusiveexperiencereport.googleapis.com', 'api/technicianonsite'),
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
       },
@@ -245,7 +245,7 @@ class OnSite{
 class RequestCompleteTicket{
   Future requestCompleteIssue(int ticketId, String comments) async {
     final res = await http.post(
-      Uri.http('fmsadmintest.azurewebsites.net', 'api/requestcompleteticket'),
+      Uri.http('abusiveexperiencereport.googleapis.com', 'api/requestcompleteticket'),
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
       },
@@ -270,7 +270,7 @@ class TechnicianLogin{
     SharedPreferences prefs = await SharedPreferences.getInstance();
     var userid = prefs.getString('userid');
     final res = await http.post(
-      Uri.http('fmsadmintest.azurewebsites.net', 'api/technicianlogin'),
+      Uri.http('abusiveexperiencereport.googleapis.com', 'api/technicianlogin'),
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
       },
